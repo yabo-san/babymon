@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <div class="card" style="width: 18rem;">
+  <div class= "col-3">
+    <div class="card" style="18rem">
       <img class="card-img-top" v-bind:src='pokemon.sprites["front_default"]' alt="Card image cap">
       <div class="card-body">
-        <p>
-          {{url}}
-        </p>
         <h5 class="card-title">Name: {{pokemon.name}}</h5>
-        <p class="pokemon-height">Height: {{pokemon.height * 3.937}}"</p>
-        <p class="pokemon-weight">Weight: {{pokemon.weight}} units</p>
+        <p class="pokemon-height">Height: {{(pokemon.height * 3.937).toFixed(2)}} inches</p>
+        <p class="pokemon-weight">Weight: {{(pokemon.weight / 4.536).toFixed(2)}} lbs</p>
       </div>
     </div>
   </div>

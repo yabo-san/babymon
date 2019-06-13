@@ -1,15 +1,16 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="babymon"/>
-    <card :url="element.pokemon.url" v-for="(element, index) in pokemonOfRockType.pokemon" :key="index"></card>
-    <div>
-
+    <div class="container">
+      <h1 class="text-center display-1">rock on \m/</h1>
+      <div class="row">
+        <card
+          :url="element.pokemon.url"
+          v-for="(element, index) in pokemonOfRockType.pokemon"
+          :key="index"
+          style= "margin-bottom: 30px"
+        ></card>
+      </div>
     </div>
-    <div v-for="(element, index) in pokemonOfRockType.pokemon" :key="index">
-      {{element.pokemon.url}}
-    </div>
-
   </div>
 </template>
 
@@ -40,13 +41,3 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
