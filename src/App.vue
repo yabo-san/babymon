@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <div class="container">
-      <h1 class="text-center display-1">rock on \m/</h1>
-      <button class="btn btn-primary"
+      <h1 class="text-center display-1"><span class="text-capitalize">{{ActiveType}}</span> on \m/</h1>
+      <button
+        v-on:click="SomethingHappened(element.name)"
+        class="btn btn-primary"
         v-for="(element, index) in types"
         :key="index"
         style="margin-bottom: 30px"
@@ -32,9 +34,16 @@ export default {
   data: function() {
     return {
       pokemonOfRockType: "",
-      types: "" 
+      types: "",
+      ActiveType: ""
     };
   },
+methods:{
+  SomethingHappened: function(name){
+    console.log(name)
+    this.ActiveType = name
+  }
+},
   mounted: function() {
     const axios = require("axios");
     const vm = this;
