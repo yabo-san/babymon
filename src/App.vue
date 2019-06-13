@@ -2,12 +2,17 @@
   <div id="app">
     <div class="container">
       <h1 class="text-center display-1">rock on \m/</h1>
+      <button class="btn btn-primary"
+        v-for="(element, index) in types"
+        :key="index"
+        style="margin-bottom: 30px"
+      >{{element.name}}</button>
       <div class="row">
         <card
           :url="element.pokemon.url"
           v-for="(element, index) in pokemonOfRockType.pokemon"
           :key="index"
-          style= "margin-bottom: 30px"
+          style="margin-bottom: 30px"
         ></card>
       </div>
     </div>
@@ -25,7 +30,10 @@ export default {
     card
   },
   data: function() {
-    return { pokemonOfRockType: "" };
+    return {
+      pokemonOfRockType: "",
+      types: "" 
+    };
   },
   mounted: function() {
     const axios = require("axios");
@@ -36,6 +44,13 @@ export default {
     }).then(function(response) {
       console.log(response.data.pokemon);
       vm.pokemonOfRockType = response.data;
+    });
+    axios({
+      method: "get",
+      url: "http://pokeapi.co/api/v2/type/"
+    }).then(function(response) {
+      console.log(response.data);
+      vm.types = response.data.results;
     });
   }
 };
