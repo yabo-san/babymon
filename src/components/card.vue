@@ -3,6 +3,9 @@
     <div class="card" style="width: 18rem;">
       <img class="card-img-top" v-bind:src='pokemon.sprites["front_default"]' alt="Card image cap">
       <div class="card-body">
+        <p>
+          {{url}}
+        </p>
         <h5 class="card-title">Name: {{pokemon.name}}</h5>
         <p class="pokemon-height">Height: {{pokemon.height * 3.937}}"</p>
         <p class="pokemon-weight">Weight: {{pokemon.weight}} units</p>
@@ -18,14 +21,14 @@ export default {
     return { pokemon: "" };
   },
   props: {
-    msg: String
+    url: String
   },
   mounted: function() {
     const axios = require("axios");
     const vm = this;
     axios({
       method: "get",
-      url: "http://pokeapi.co/api/v2/pokemon/dratini"
+      url: vm.url
     }).then(function(response) {
       console.log(response);
       vm.pokemon = response.data;

@@ -2,8 +2,14 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="babymon"/>
-    <card></card>
-    <div v-for="(element, index) in pokemonOfRockType.pokemon" :key="index">{{element.pokemon.name}}</div>
+    <card :url="element.pokemon.url" v-for="(element, index) in pokemonOfRockType.pokemon" :key="index"></card>
+    <div>
+
+    </div>
+    <div v-for="(element, index) in pokemonOfRockType.pokemon" :key="index">
+      {{element.pokemon.url}}
+    </div>
+
   </div>
 </template>
 
