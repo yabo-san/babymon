@@ -1,5 +1,5 @@
 <template>
-  <div class= "col-3">
+  <div class= "col-3" v-if="pokemon.sprites.front_default && pokemon.sprites">
     <div class="card" style="18rem">
       <img class="card-img-top" v-bind:src='pokemon.sprites["front_default"]' alt="Card image cap">
       <div class="card-body">
@@ -13,25 +13,30 @@
 
 <script>
 export default {
-  name: "card",
-  data: function() {
-    return { pokemon: "" };
+  name: 'card',
+  data: function () {
+      return {
+        pokemon: ""
+      }
   },
   props: {
     url: String
   },
   mounted: function() {
-    const axios = require("axios");
+    console.log("mounted function ran")
+    const axios = require('axios');
     const vm = this;
     axios({
-      method: "get",
-      url: vm.url
-    }).then(function(response) {
-      console.log(response);
-      vm.pokemon = response.data;
+        method: 'get',
+        url: vm.url,
+        
+    })
+    .then(function (response) {
+        // console.log(response.data);
+        vm.pokemon = response.data
     });
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
